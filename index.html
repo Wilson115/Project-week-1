@@ -1,13 +1,159 @@
-<h1>Hello SDI</h1>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>To Do List</title>
+    <script defer src = './index.js'></script>
+
+    <style>
+
+        body{
+            background-image: url('./Assets/Images/milkyway.webp');
+            background-size: cover;
+        }
+
+        h1{
+            color:white; 
+            font-size:7vw; 
+            text-align: center;
+            text-shadow: 2px 4px gray;
+        }
+
+        .container2 {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 50%;
+            align-content: flex-start;
+        }
+
+        .item2 {
+            border-radius: 8px;
+            vertical-align: top;
+        }
+
+        textarea {
+             display:inline-block;
+             width: 70%;
+             padding: 16px 20px;
+             font-size: 1.5vw;
+             border: 2px solid rgb(131, 125, 125);
+             border-radius: 8px;
+             background-color: #f8f8f8;
+             resize: none;    
+        }
+
+        .submitbtn{
+            display:inline-block;
+            width:15%;
+            font-size: 2vw;
+            border: 2px solid rgb(131, 125, 125);
+            border-radius: 8px;
+            background-color: #f8f8f8;
+            cursor: pointer;   
+        }
+
+        .clearbtn{
+            height:3vw;
+            width: 30%;
+            font-size:1.25vw;
+            font-weight: 600;
+            border: 2px solid rgb(131, 125, 125);
+            border-radius: 8px;
+            background-color: #f8f8f8
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            width: 50%;
+        }
+
+        .item {
+            padding: 10px;
+            border-radius: 8px;
+            width: 40vw; 
+            margin: 10px 10px 10px 0px;
+            background-color: rgb(129, 179, 222); 
+            text-align: center;
+            font-size: 2vw;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            transition: 0.45s
+        }
+        .item:hover{
+            background-color: rgb(181, 209, 231); 
+            overflow: visible;
+            font: 50px;
+            width: 43vw;
+        }
+
+        .donebtn{
+            cursor: pointer;
+        }
+        .donebtn:hover{
+            background-color: rgb(84, 169, 107);
+        }
+        .checked{
+            text-decoration: line-through;
+            background: #888;
+            color: #fff;
+        }
+
+
+        .deletebtn{
+            cursor: pointer;
+        }
+        .deletebtn:hover{
+            background-color: rgb(169, 84, 129);
+        }
+
+
+        .outercontainer{
+            display:flex;
+            flex-direction: row;
+            margin: auto 10% auto 10%;
+        }
+    
+     @media screen and (max-width: 768px){
+    
+        .outercontainer{
+            flex-direction: column;
+        }
+       
+        .container2 {
+            width: 80%;
+        }
+        
+        .container {
+            width: 100%;
+            flex-grow: 100%;
+        }
+
+    }
+        
+    </style>
 </head>
 <body>
-    <input type = "checkbox" id="stopcheck" onclick="stopchange()"></input>
+    <h1>To Do List</h1>
+    <form>
+
+    <div class = 'outercontainer'>
+        <div class = 'container2' id = 'itemlist2'>
+            <textarea  autofocus id ='itemInput' class = 'item2' placeholder = 'Task to do..'></textarea>
+            <input type ='button' id='submitbtn' class = 'submitbtn item2' onclick='createItem()' value = '+'/>
+            <input type ='button' id='clearbtn' class = 'clearbtn item2' onclick='clearItem()' 
+            style = 'font-family: monospace' value = 'Clear All'/>
+            <p style = 'color:white; font-size: 3vw;'>You have <span id='taskno'>0</span> pending tasks</p>
+        </div>
+        
+        <div class = 'container' id = 'itemlist'></div>
+
+    </div>
+    </form>
 </body>
 </html>
